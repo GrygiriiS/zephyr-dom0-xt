@@ -10,11 +10,13 @@ manifest:
       url-base: https://github.com/xen-troops/
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos/
+    - name: grag
+      url-base: https://github.com/GrygiriiS/
 
   projects:
     - name: zephyr
-      remote: xentroops
-      revision: zephyr-v3.6.0-xt
+      remote: grag
+      revision: rpi5_dev_scmi1
       west-commands: scripts/west-commands.yml
     - name: zephyr-xenlib
       remote: xentroops

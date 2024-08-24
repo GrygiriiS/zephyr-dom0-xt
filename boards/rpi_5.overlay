@@ -55,9 +55,37 @@
 	 * Xen passes actual values for setup in domain device tree, but Zephyr
 	 * is not capable to parse and handle it in runtime.
 	 */
-	sram0: memory@10000000 {
+	sram0: memory@30000000 {
 		compatible = "mmio-sram";
-		reg = <0x00 0x10000000 DT_SIZE_M(128)>;
+		reg = <0x00 0x30000000 DT_SIZE_M(128)>;
+	};
+
+	firmware {
+		scmi {
+			compatible = "arm,scmi-smc";
+			arm,smc-id = <0x82000002>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			shmem = <&scmi_buf>;
+
+			scmi_reset: protocol@16 {
+				compatible = "arm,scmi-reset";
+				reg = <0x16>;
+				#reset-cells = <1>;
+			};
+		};
+	};
+
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges;
+
+		scmi_buf: scmi@3ff00000 {
+			compatible = "zephyr,memory-region";
+			reg = <0x0 0x3ff01000 4096>;
+			zephyr,memory-region = "scmi";
+		};
 	};
 };
 
