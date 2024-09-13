@@ -16,14 +16,14 @@ manifest:
   projects:
     - name: zephyr
       remote: grag
-      revision: rpi5_dev_scmi1
+      revision: rpi5_dev_scmi_demo
       west-commands: scripts/west-commands.yml
     - name: zephyr-xenlib
       remote: xentroops
-      revision: main
+      revision: e3ec0d7cf3d9bd2a1c697234f4afaa0b53dea09c
     - name: fatfs
       remote: zephyrproject-rtos
       revision: 427159bf95ea49b7680facffaa29ad506b42709b
     - name: zephyr-xrun
       remote: xentroops
-      revision: main
+      revision: 5b6ecf274bac79b0be740693766a88d3eedf3b44
